@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smooth Keyboard Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <div class="expression" id="expression"></div>
+      <div class="result" id="result"></div>
+    </div>
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button id="backspace">C</button>
+
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
+
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>-</button>
+
+      <button>0</button>
+      <button>.</button>
+      <button class="equal">=</button>
+      <button>+</button>
+    </div>
+  </div>
+
+  <script>
+    const expressionDisplay = document.getElementById("expression");
+    const resultDisplay = document.getElementById("result");
+    const buttons = document.querySelectorAll("button");
+    let expression = "";
+
+    // Button click
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => handleInput(btn.textContent, btn.id));
+    });
+
+    // Keyboard support
+    document.addEventListener("keydown", (e) => {
+      const key = e.key;
+      const allowed = "0123456789+-*/.=EnterBackspaceEscape";
+      if (!allowed.includes(key)) return;
+
+      const button = [...buttons].find(
+        (b) =>
+          b.textContent === key ||
+          (key === "Enter" && b.textContent === "=") ||
+          (key === "Backspace" && b.id === "backspace")
+      );
+
+      if (button) {
+        button.classList.add("pressed");
+        setTimeout(() => button.classList.remove("pressed"), 150);
+        handleInput(button.textContent, button.id);
+      }
+
+      if (key === "Escape") {
+        clearAll();
+      }
+    });
+
+    function handleInput(value, id) {
+      if (id === "backspace") {
+        expression = expression.slice(0, -1);
+        expressionDisplay.textContent = expression;
+      } else if (value === "=") {
+        try {
+          const result = eval(expression);
+          expressionDisplay.textContent = expression;
+          resultDisplay.textContent = result;
+          expression = result.toString();
+        } catch {
+          resultDisplay.textContent = "Error";
+          expression = "";
+        }
+      } else {
+        expression += value;
+        expressionDisplay.textContent = expression;
+      }
+    }
+
+    function clearAll() {
+      expression = "";
+      expressionDisplay.textContent = "";
+      resultDisplay.textContent = "";
+    }
+  </script>
+</body>
+</html>
