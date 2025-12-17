@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mini E-Commerce App - Lab 14 Mini Project">
+    <title>Mini E-Commerce App</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+        section {
+            padding: 60px 0;
+        }
+        .product-card {
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">MiniShop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= HOME ================= -->
+<section id="home" class="bg-light text-center">
+    <div class="container">
+        <h1 class="mt-5">Welcome to MiniShop</h1>
+        <p class="lead">A simple mini e-commerce application</p>
+        <a href="#shop" class="btn btn-primary">Shop Now</a>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+    <div class="container">
+        <h2 class="text-center">About This Project</h2>
+        <p class="text-center">
+            This mini project is developed for Lab 14 to demonstrate
+            wireframe-based layout design, navigation, and core features
+            of a simple e-commerce application.
+        </p>
+    </div>
+</section>
+
+<!-- ================= SHOP ================= -->
+<section id="shop" class="bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Products</h2>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">$25.00</p>
+                        <button class="btn btn-success" onclick="addToCart('Product 1')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">$40.00</p>
+                        <button class="btn btn-success" onclick="addToCart('Product 2')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">$60.00</p>
+                        <button class="btn btn-success" onclick="addToCart('Product 3')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+    <div class="container">
+        <h2 class="text-center">Contact Us</h2>
+        <form class="w-50 mx-auto">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary w-100">Send</button>
+        </form>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-dark text-white text-center p-3">
+    <p>&copy; 2025 Mini E-Commerce App | Lab 14</p>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    function addToCart(product) {
+        alert(product + " added to cart!");
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
